@@ -72,7 +72,7 @@ const Login = () => {
               //veriler global statete aktarılabilir.
               //navigasyon yapılabilir.
               //toastify ile bilgilendirme yapılabilir.
-              login(values); //onSubmit içindeki values 
+              login(values); //onSubmit içindeki valuesden logın bızden bır parmtre ıster bu yuzden verdık.
             }}
           >
             {(
