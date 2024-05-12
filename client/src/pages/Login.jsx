@@ -10,9 +10,10 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
-import { login } from "../service/authApiCall.js";
+import useAuthCalls from "../service/useAuthCalls.js";
 
 const Login = () => {
+  const { login } = useAuthCalls();
   const loginSchema = object({
     email: string()
       .email("Lütfen geçerli bir email giriniz.")
@@ -72,7 +73,7 @@ const Login = () => {
               //veriler global statete aktarılabilir.
               //navigasyon yapılabilir.
               //toastify ile bilgilendirme yapılabilir.
-              login(values); //onSubmit içindeki valuesden logın bızden bır parmtre ıster bu yuzden verdık.
+              login(values); //useAuthCalls'daki logın fonk çagırdık ve onSubmit içindeki valuesden logın bızden bır parmtre ıster bu yuzden verdık.
             }}
           >
             {(
