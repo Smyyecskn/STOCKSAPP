@@ -16,7 +16,7 @@ const Firms = () => {
 
   return (
     <div>
-      <Typography variant="h5" color="error" mb={3}>
+      <Typography variant="h5" color="error" mb={3} marginLeft={3}>
         Firms
       </Typography>
       <Button variant="contained">New Firm</Button>

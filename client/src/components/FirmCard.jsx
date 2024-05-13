@@ -3,12 +3,31 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+
+const btnStyle = {
+  "&:hover": {
+    color: "blue",
+    cursor: "pointer",
+  },
+};
 
 export default function FirmCard({ firm }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-around", //ust ve alta dayayacak.
+        alignItems: "center",
+        width: "300px",
+        height: "400px",
+        p: "2px",
+      }}
+    >
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {firm.name}
@@ -16,24 +35,21 @@ export default function FirmCard({ firm }) {
         <Typography variant="body2" color="text.secondary">
           {firm.address}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {firm.phone}
-        </Typography>
       </CardContent>
       <CardMedia
         component="img"
         alt="green iguana"
         height="140"
         image={firm.image}
+        sx={{ objectFit: "contain" }}
       />
+      <Typography variant="body2" color="text.secondary">
+        {firm.phone}
+      </Typography>
 
       <CardActions>
-        <Button size="small" variant="contained">
-          Edit
-        </Button>
-        <Button size="small" variant="contained">
-          Delete
-        </Button>
+        <EditIcon sx={btnStyle} />
+        <DeleteForeverIcon sx={btnStyle} />
       </CardActions>
     </Card>
   );
