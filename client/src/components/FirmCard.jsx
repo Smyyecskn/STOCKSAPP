@@ -6,15 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-
-const btnStyle = {
-  "&:hover": {
-    color: "blue",
-    cursor: "pointer",
-  },
-};
+import { btnStyle } from "../styles/btnStyles";
+import useStockCalls from "../service/useStockCalls";
 
 export default function FirmCard({ firm }) {
+  const { deleteStock } = useStockCalls();
+  const { editStock } = useStockCalls();
   return (
     <Card
       sx={{
@@ -48,8 +45,11 @@ export default function FirmCard({ firm }) {
       </Typography>
 
       <CardActions>
-        <EditIcon sx={btnStyle} />
-        <DeleteForeverIcon sx={btnStyle} />
+        <EditIcon sx={btnStyle} onClick={() => editStock("firms", firm._id)} />
+        <DeleteForeverIcon
+          sx={btnStyle}
+          onClick={() => deleteStock("firms", firm._id)}
+        />
       </CardActions>
     </Card>
   );

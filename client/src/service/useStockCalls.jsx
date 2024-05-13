@@ -30,8 +30,31 @@ const useStockCalls = () => {
       toastErrorNotify(`${url} listesi getirilemedi`);
     }
   };
+  const deleteStock = async (url = "firms", id) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.delete(`/${url}/${id}`);
+      toastSuccessNotify(`Firma başarıyla silindi`);
+      getStocks();
+    } catch (error) {
+      dispatch(fetchFail());
+      toastErrorNotify(`Firma listesi silinemedi`);
+    }
+  };
 
-  return { getStocks };
+  const editStock = async (url = "firms", id, body) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.put(`/${url}/${id}`, body);
+      toastSuccessNotify(`Firma başarıyla güncellendi`);
+      getStocks();
+    } catch (error) {
+      dispatch(fetchFail());
+      toastErrorNotify(`Firma güncellenemedi`);
+    }
+  };
+
+  return { getStocks, deleteStock, editStock };
 };
 
 export default useStockCalls;
