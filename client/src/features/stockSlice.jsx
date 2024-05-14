@@ -30,6 +30,8 @@ const authSlice = createSlice({
       state[payload.url] = payload.apiData;
     },
 
+  
+
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;

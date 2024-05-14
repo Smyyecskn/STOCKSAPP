@@ -35,17 +35,28 @@ const useStockCalls = () => {
     try {
       await axiosWithToken.delete(`/${url}/${id}`);
       toastSuccessNotify(`Firma başarıyla silindi`);
-      getStocks();
+      getStocks(url);
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify(`Firma listesi silinemedi`);
     }
   };
-
-  const editStock = async (url = "firms", id, body) => {
+  const postStock = async (url = "firms", info) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.put(`/${url}/${id}`, body);
+      await axiosWithToken.post(`/${url}/`, info);
+      toastSuccessNotify(`Firma başarıyla eklendi`);
+      getStocks(url);
+    } catch (error) {
+      dispatch(fetchFail());
+      toastErrorNotify(`Firma eklenemedi`);
+    }
+  };
+
+  const putStock = async (url = "firms", info) => {
+    dispatch(fetchStart());
+    try {
+      await axiosWithToken.put(`/${url}/${info._id}`, info);
       toastSuccessNotify(`Firma başarıyla güncellendi`);
       getStocks();
     } catch (error) {
@@ -54,7 +65,7 @@ const useStockCalls = () => {
     }
   };
 
-  return { getStocks, deleteStock, editStock };
+  return { getStocks, deleteStock, postStock, putStock };
 };
 
 export default useStockCalls;
