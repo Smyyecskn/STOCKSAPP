@@ -1,5 +1,4 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
+ import Box from "@mui/material/Box";
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
