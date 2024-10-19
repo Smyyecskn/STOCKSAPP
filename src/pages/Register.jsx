@@ -65,7 +65,7 @@ const Register = () => {
               actions.resetForm();
               actions.setSubmitting(false);
             }}
-            component={(props) => <RegisterForm {...props} />} //component içinde Form elementlerını kullandık.
+            component={(props) => <RegisterForm {...props} />} //component içinde Form elementlerını kullandık. Böl parçala
           ></Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
