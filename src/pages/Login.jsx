@@ -97,7 +97,7 @@ const Login = () => {
                     onBlur={handleBlur} //onFocus aktifliği ayrıldıgını da onBlur eventı tetıklenır.Formıkın de hazır fonksıyonu olan handleBlur fonksıyonunu ıcıne yazdık.
                     onChange={handleChange}
                     error={touched.email && Boolean(errors.email)} //muıden gelen error değişkeni true olursa helperTexti basar.
-                    helperText={errors.email} //alttakı yazıyı döndürür.errorun true olup olmamasına göre cıkarır.
+                    helperText={errors.email} //alttakı minik yazıyı döndürür.errors.emailin true olup olmamasına göre cıkarır.
                   />
                   <TextField
                     label="password"
