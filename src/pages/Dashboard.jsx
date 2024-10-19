@@ -63,7 +63,7 @@ function Dashboard(props) {
           </Typography>
 
           {user && (
-            <Button color="inherit" onClick={logout}>
+            <Button color="error" variant="contained" onClick={logout}>
               Logout
             </Button>
           )}
