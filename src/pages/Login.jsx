@@ -24,7 +24,11 @@ const Login = () => {
       .max(16, "Şifre en fazla 16 karakter içermelidir.")
       .matches(/\d+/, "Şifre en az bir rakam içermelidir.")
       .matches(/[a-z]/, "Şifre en az bir harf içermelidir.")
-      .matches(/[A-Z]/, "Şifre en az bir buyuk harf içermelidir."),
+      .matches(/[A-Z]/, "Şifre en az bir buyuk harf içermelidir.")
+      .matches(
+        /[!/[@$!%*?&]+/,
+        "Şifre bir özel karakter (!/[@$!%*?&) içermelidir"
+      ),
   });
   return (
     <Container maxWidth="lg">
