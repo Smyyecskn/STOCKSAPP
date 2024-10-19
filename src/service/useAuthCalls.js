@@ -43,7 +43,7 @@ const useAuthCalls = () => {
       //   `${process.env.REACT_APP_BASE_URL}/users/`,
       //   userInfo
       // )
-      const { data } = await axiosPublic.post("/users/", userInfo);//!2. YOL useAxios custom hook içinden aldık.
+      const { data } = await axiosPublic.post("/users/", userInfo); //!2. YOL useAxios custom hook içinden aldık.
       dispatch(registerSuccess(data));
       navigate("/stock");
     } catch (error) {
@@ -58,12 +58,12 @@ const useAuthCalls = () => {
       //   headers: { Authorization: `Token ${token}` },
       // })
       await axiosWithToken("/auth/logout/"); //!2. YOL .get de yapabiliriz.
-      toastSuccessNotify("Çıkış işlemi başarili.");
+      toastSuccessNotify("Çıkış işlemi başarılı.");
       dispatch(logoutSuccess());
       // navigate("/")
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify("Çıkış işlemi başarisiz oldu.");
+      toastErrorNotify("Çıkış işlemi başarısız oldu.");
     }
   };
 

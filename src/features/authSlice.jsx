@@ -32,7 +32,7 @@ const authSlice = createSlice({
     logoutSuccess: (state) => {
       state.user = "";
       state.loading = false;
-      state.token = null;
+      state.token = "";
     },
   },
 });
