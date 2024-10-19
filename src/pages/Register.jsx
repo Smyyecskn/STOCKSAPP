@@ -75,7 +75,7 @@ const Register = () => {
 
         <Grid item xs={0} sm={7} md={6}>
           <Container>
-            <img src={image} alt="" />
+            <img src={image} alt="img" />
           </Container>
         </Grid>
       </Grid>
