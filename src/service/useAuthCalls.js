@@ -57,10 +57,10 @@ const useAuthCalls = () => {
       // await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/logout`, {
       //   headers: { Authorization: `Token ${token}` },
       // })
-      await axiosWithToken("/auth/logout/"); //!2. YOL .get de yapabiliriz.
+      await axiosWithToken.get("/auth/logout/"); //!2. YOL .get de yapabiliriz.
       toastSuccessNotify("Çıkış işlemi başarılı.");
       dispatch(logoutSuccess());
-      // navigate("/")
+      // navigate("/");
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify("Çıkış işlemi başarısız oldu.");

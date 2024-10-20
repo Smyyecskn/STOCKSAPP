@@ -31,8 +31,9 @@ const authSlice = createSlice({
     },
     logoutSuccess: (state) => {
       state.user = "";
-      state.loading = false;
       state.token = "";
+      state.loading = false;
+      state.error = false;
     },
   },
 });

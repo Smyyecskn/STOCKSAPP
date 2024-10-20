@@ -11,10 +11,10 @@ import {
   // PURGE,
   // REGISTER,
 } from "redux-persist";
-// import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+// import storage from 'redux-persist/lib/storage' //! defaults to localStorage
 import storage from "redux-persist/lib/storage/session"; // session storage
 
-//!uygulamayı kalıcı hale getirmek için önce persist yukleriz. Sonra 4-9 ve 14. 24. satırları alıyoruz npm persistten
+//!uygulamayı kalıcı hale getirmek için önce persist yukleriz. Yani persister login bilgilerini session storage'da tutuyor.Sonra 4-9 ve 19. 24. satırları alıyoruz npm persistten. Sonra 42de dışarıya açtık ve app.js de 24de PersistGate komp çağırdık.
 
 const persistConfig = {
   key: "auth",
@@ -25,7 +25,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 
 const store = configureStore({
   reducer: {
-    auth: persistedReducer,
+    auth: persistedReducer, // root reducerı sadece authtda kullanmak istedik user bilgisini sessionda sakladık.
     stock: stockReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
