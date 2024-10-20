@@ -1,4 +1,5 @@
-import { Button, Grid } from "@mui/material";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import useStockCalls from "../service/useStockCalls";
@@ -22,12 +23,12 @@ const Firms = () => {
     setOpen(false);
     setInfo({ name: "", phone: "", address: "", image: "" });
   };
-  console.log("info", info);
+  // console.log("info", info);
 
   useEffect(() => {
     getStocks("firms");
   }, []);
-  console.log("firms", firms);
+  // console.log("firms", firms);
 
   return (
     <div>

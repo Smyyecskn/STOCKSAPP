@@ -65,7 +65,18 @@ const useStockCalls = () => {
     }
   };
 
-  return { getStocks, deleteStock, postStock, putStock };
+  const getSales = async(url) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosWithToken.get(`/${url}`);
+      const apiData = data.data;
+      dispatch(getStockSuccess({ apiData, url }));
+      toastSuccessNotify(`${url} listesi getirildi`);
+    } catch (error) {
+      dispatch(fetchFail());
+  }
+
+  return { getStocks, deleteStock, postStock, putStock, getSales };
 };
 
 export default useStockCalls;

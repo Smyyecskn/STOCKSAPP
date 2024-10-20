@@ -20,7 +20,7 @@ const authSlice = createSlice({
       state.loading = true;
     },
     //! 1. YÖNTEM
-    // getFirmSuccess: (state, {payload}) => {
+    // getFirmSuccess: (state, { payload }) => {
     //   state.loading = false;
     //   state.firms = payload.data;
     // },
@@ -28,9 +28,8 @@ const authSlice = createSlice({
     getStockSuccess: (state, { payload }) => {
       state.loading = false;
       state[payload.url] = payload.apiData;
+      state["firms"] = payload.apiData;
     },
-
-  
 
     fetchFail: (state) => {
       state.loading = false;
