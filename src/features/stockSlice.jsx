@@ -28,7 +28,6 @@ const authSlice = createSlice({
     getStockSuccess: (state, { payload }) => {
       state.loading = false;
       state[payload.url] = payload.apiData;
-      state["firms"] = payload.apiData;
     },
 
     fetchFail: (state) => {

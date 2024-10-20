@@ -34,10 +34,10 @@ export default function FirmCard({ firm, handleOpen, setInfo }) {
       </CardContent>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt="image"
         height="140"
         image={firm.image}
-        sx={{ objectFit: "contain" }}
+        sx={{ objectFit: "contain" }} //!resmi sığdırmak icin
       />
       <Typography variant="body2" color="text.secondary">
         {firm.phone}

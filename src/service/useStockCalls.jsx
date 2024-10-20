@@ -21,7 +21,7 @@ const useStockCalls = () => {
   const getStocks = async (url = "firms") => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken.get(`/${url}`);
+      const { data } = await axiosWithToken(`/${url}`);
       const apiData = data.data;
       dispatch(getStockSuccess({ apiData, url }));
       toastSuccessNotify(`${url} listesi getirildi`);
@@ -34,22 +34,22 @@ const useStockCalls = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.delete(`/${url}/${id}`);
-      toastSuccessNotify(`Firma başarıyla silindi`);
+      toastSuccessNotify(`${url} bilgileri başarıyla silindi`);
       getStocks(url);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`Firma listesi silinemedi`);
+      toastErrorNotify(`${url} bilgileri silinemedi!`);
     }
   };
   const postStock = async (url = "firms", info) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`/${url}/`, info);
-      toastSuccessNotify(`Firma başarıyla eklendi`);
+      toastSuccessNotify(`${url} başarıyla eklendi`);
       getStocks(url);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`Firma eklenemedi`);
+      toastErrorNotify(`${url} eklenemedi`);
     }
   };
 
@@ -57,26 +57,15 @@ const useStockCalls = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`/${url}/${info._id}`, info);
-      toastSuccessNotify(`Firma başarıyla güncellendi`);
-      getStocks();
+      toastSuccessNotify(`${url} başarıyla güncellendi`);
+      getStocks(url);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`Firma güncellenemedi`);
+      toastErrorNotify(`${url} güncellenemedi`);
     }
   };
 
-  const getSales = async(url) => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axiosWithToken.get(`/${url}`);
-      const apiData = data.data;
-      dispatch(getStockSuccess({ apiData, url }));
-      toastSuccessNotify(`${url} listesi getirildi`);
-    } catch (error) {
-      dispatch(fetchFail());
-  }
-
-  return { getStocks, deleteStock, postStock, putStock, getSales };
+  return { getStocks, deleteStock, postStock, putStock };
 };
 
 export default useStockCalls;
