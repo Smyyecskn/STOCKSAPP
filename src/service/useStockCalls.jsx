@@ -41,10 +41,10 @@ const useStockCalls = () => {
       toastErrorNotify(`${url} bilgileri silinemedi!`);
     }
   };
-  const postStock = async (url = "firms", info) => {
+  const postStock = async (url = "firms", body) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`/${url}/`, info);
+      await axiosWithToken.post(`/${url}/`, body);
       toastSuccessNotify(`${url} başarıyla eklendi`);
       getStocks(url);
     } catch (error) {

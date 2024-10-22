@@ -11,6 +11,9 @@ import useStockCalls from "../service/useStockCalls";
 
 export default function FirmCard({ firm, handleOpen, setInfo }) {
   const { deleteStock } = useStockCalls();
+
+  const { name, address, phone, image, _id } = firm;
+  // console.log("firm", firm);
   return (
     <Card
       sx={{
@@ -26,21 +29,21 @@ export default function FirmCard({ firm, handleOpen, setInfo }) {
     >
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {firm.name}
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {firm.address}
+          {address}
         </Typography>
       </CardContent>
       <CardMedia
         component="img"
         alt="image"
         height="140"
-        image={firm.image}
+        image={image}
         sx={{ objectFit: "contain" }} //!resmi sığdırmak icin
       />
       <Typography variant="body2" color="text.secondary">
-        {firm.phone}
+        {phone}
       </Typography>
 
       <CardActions>
@@ -53,7 +56,7 @@ export default function FirmCard({ firm, handleOpen, setInfo }) {
         />
         <DeleteForeverIcon
           sx={btnStyle}
-          onClick={() => deleteStock("firms", firm._id)}
+          onClick={() => deleteStock("firms", _id)}
         />
       </CardActions>
     </Card>

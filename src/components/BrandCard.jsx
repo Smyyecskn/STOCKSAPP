@@ -11,6 +11,9 @@ import useStockCalls from "../service/useStockCalls";
 
 export default function BrandCard({ brand, handleOpen, setInfo }) {
   const { deleteStock } = useStockCalls();
+
+  // console.log("brand", brand);
+
   return (
     <Card
       sx={{
@@ -25,11 +28,13 @@ export default function BrandCard({ brand, handleOpen, setInfo }) {
       }}
     >
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h4"
+          component="div"
+          sx={{ text: "start" }}
+        >
           {brand.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {brand.address}
         </Typography>
       </CardContent>
       <CardMedia
@@ -39,9 +44,6 @@ export default function BrandCard({ brand, handleOpen, setInfo }) {
         image={brand.image}
         sx={{ objectFit: "contain" }} //!resmi sığdırmak icin
       />
-      <Typography variant="body2" color="text.secondary">
-        {brand.phone}
-      </Typography>
 
       <CardActions>
         <EditIcon
@@ -53,7 +55,7 @@ export default function BrandCard({ brand, handleOpen, setInfo }) {
         />
         <DeleteForeverIcon
           sx={btnStyle}
-          onClick={() => deleteStock("firms", brand._id)}
+          onClick={() => deleteStock("brands", brand._id)}
         />
       </CardActions>
     </Card>

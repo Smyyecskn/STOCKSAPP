@@ -1,4 +1,4 @@
- import Box from "@mui/material/Box";
+import Box from "@mui/material/Box";
 import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -61,7 +61,7 @@ export default function ProductTable() {
       getActions: (props) => [
         <GridActionsCellItem
           icon={<DeleteForeverIcon />}
-          onClick={() => deleteStock("products", props.id)}
+          onClick={() => deleteStock("products", props._id)}
           label="Delete"
         />,
       ],

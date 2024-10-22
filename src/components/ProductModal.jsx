@@ -24,7 +24,7 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
     handleClose();
   };
 
-  console.log(info);
+  // console.log(info);
   return (
     <div>
       <Modal
@@ -45,7 +45,7 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
                 labelId="categoryId"
                 id="categoryId"
                 name="categoryId"
-                value={info.categoryId}
+                value={info?._id}
                 label="Category"
                 onChange={handleChange}
               >
@@ -63,7 +63,7 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
                 labelId="brandId"
                 id="brandId"
                 name="brandId"
-                value={info.brandId}
+                value={info?._id}
                 label="Brand"
                 onChange={handleChange}
               >
@@ -81,7 +81,7 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
               id="name"
               type="text"
               variant="outlined"
-              value={info.name}
+              value={info?.name}
               onChange={handleChange}
               required
             />

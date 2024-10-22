@@ -11,6 +11,8 @@ export default function FirmModal({ open, handleClose, info, setInfo }) {
   const { putStock } = useStockCalls();
 
   const handleChange = (e) => {
+    // const { name, value } = e.target;
+    // setInfo( { ...info, [name]: value });
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
 
@@ -53,7 +55,7 @@ export default function FirmModal({ open, handleClose, info, setInfo }) {
               label="Phone"
               name="phone"
               id="phone"
-              type="text"
+              type="tel"
               variant="outlined"
               value={info.phone}
               onChange={handleChange}
@@ -73,7 +75,7 @@ export default function FirmModal({ open, handleClose, info, setInfo }) {
               label="Image"
               name="image"
               id="image"
-              type="text"
+              type="url"
               variant="outlined"
               value={info.image}
               onChange={handleChange}

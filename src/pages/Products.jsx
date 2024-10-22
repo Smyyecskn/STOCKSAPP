@@ -2,15 +2,15 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import useStockCalls from "../service/useStockCalls";
-// import { useSelector } from "react-redux";
-// import { Grid } from "@mui/material";
+import { useSelector } from "react-redux";
+import { Grid } from "@mui/material";
 import ProductModal from "../components/ProductModal";
 import ProductTable from "../components/ProductTable";
-// import TableSkeleton, { ErrorMsg, NoDataMsg } from "../components/DataFetchMsg";
+import TableSkeleton, { ErrorMsg, NoDataMsg } from "../components/DataFetchMsg";
 
 const Products = () => {
   const { getStocks } = useStockCalls();
-  // const { products, error, loading } = useSelector((state) => state.stock);
+  const { products, error, loading } = useSelector((state) => state.stock);
 
   // const initialState = { categoryId: "", brandId: "", name: "" };
   const [info, setInfo] = useState({
@@ -29,9 +29,11 @@ const Products = () => {
 
   useEffect(() => {
     getStocks("products");
-    // getStocks("categories");
-    // getStocks("brands");
+    getStocks("categories");
+    getStocks("brands");
   }, []);
+
+  console.log("products", products);
 
   return (
     <div>
@@ -49,12 +51,12 @@ const Products = () => {
         setInfo={setInfo}
       />
 
-      {/* {error && <ErrorMsg />}
+      {error && <ErrorMsg />}
       {loading && <TableSkeleton />}
 
-      {!error && !loading && !products.length && <NoDataMsg />} */}
+      {!error && !loading && !products.length && <NoDataMsg />}
 
-      {/* {!loading && !error && products.length > 0 && <ProductTable />} */}
+      {!loading && !error && products.length > 0 && <ProductTable />}
       <ProductTable />
     </div>
   );

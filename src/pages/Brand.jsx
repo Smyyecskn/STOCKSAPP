@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useStockCalls from "../service/useStockCalls";
 import { useSelector } from "react-redux";
 import BrandCard from "../components/BrandCard";
+import BrandModal from "../components/BrandModal";
 
 const Brand = () => {
   const { getStocks } = useStockCalls();
@@ -12,22 +13,21 @@ const Brand = () => {
 
   const [info, setInfo] = useState({
     name: "",
-    phone: "",
-    address: "",
     image: "",
   });
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+
   const handleClose = () => {
     setOpen(false);
-    setInfo({ name: "", phone: "", address: "", image: "" });
+    setInfo({ name: "", image: "" });
   };
-  console.log("info", info);
+  // console.log("info", info);
 
   useEffect(() => {
     getStocks("brands");
   }, []);
-  console.log("brand", brands);
+  // console.log("brand", brands);
 
   return (
     <div>
@@ -35,14 +35,14 @@ const Brand = () => {
         Brands
       </Typography>
       <Button variant="contained" onClick={handleOpen}>
-        New Firm
+        New Brands
       </Button>
-      {/* <FirmModal
+      <BrandModal
         open={open}
         handleClose={handleClose}
         info={info}
         setInfo={setInfo}
-      /> */}
+      />
       <Grid container gap={2} mt={3} sx={{ justifyContent: "center" }}>
         {brands?.map((brand) => (
           <Grid item key={brand._id}>
