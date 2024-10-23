@@ -27,7 +27,7 @@ const Brand = () => {
   useEffect(() => {
     getStocks("brands");
   }, []);
-  // console.log("brand", brands);
+  console.log("brand", brands);
 
   return (
     <div>

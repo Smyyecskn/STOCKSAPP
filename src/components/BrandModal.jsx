@@ -22,7 +22,6 @@ export default function BrandModal({ open, handleClose, info, setInfo }) {
       postStock("brands", info);
     }
     handleClose();
-    getStocks("brands");
   };
 
   return (
