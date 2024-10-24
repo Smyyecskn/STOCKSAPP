@@ -6,7 +6,7 @@ import useStockCalls from "../service/useStockCalls";
 // import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 
 export default function ProductTable() {
-  const { purchases } = useSelector((state) => state.stock);
+  const { products } = useSelector((state) => state.stock);
   const { deleteStock, putStock } = useStockCalls();
 
   const getRowId = (row) => row?._id;
@@ -21,16 +21,8 @@ export default function ProductTable() {
       sortable: false,
     },
     {
-      field: "brandId",
-      headerName: "Brand",
-      flex: 1.2,
-      headerAlign: "center",
-      align: "center",
-      valueGetter: (props) => props?.name,
-    },
-    {
-      field: "productId",
-      headerName: "Product",
+      field: "categoryId",
+      headerName: "Category",
       flex: 1,
       headerAlign: "center",
       align: "center",
@@ -39,10 +31,17 @@ export default function ProductTable() {
         return props?.name; //verileri formatlamak istersek
       },
     },
-
     {
-      field: "price",
-      headerName: "Price",
+      field: "brandId",
+      headerName: "Brand",
+      flex: 1.2,
+      headerAlign: "center",
+      align: "center",
+      valueGetter: (props) => props?.name,
+    },
+    {
+      field: "name",
+      headerName: "Name",
       flex: 1.5,
       headerAlign: "center",
       align: "center",
@@ -63,24 +62,24 @@ export default function ProductTable() {
       getActions: (props) => [
         <GridActionsCellItem
           icon={<DeleteForeverIcon />}
-          onClick={() => deleteStock("purchases", props.id)}
+          onClick={() => deleteStock("products", props.id)}
           label="Delete"
         />,
         // <GridActionsCellItem
         //   icon={<ModeEditOutlineIcon />}
-        //   onClick={() => putStock("purchases", props)}
+        //   onClick={() => putStock("products", props)}
         //   label="Edit"
         // />,
       ],
     },
   ];
 
-  // console.log(purchases)
+  // console.log(products)
   return (
     <Box sx={{ width: "100%" }}>
       <DataGrid
         autoHeight
-        rows={purchases || []}
+        rows={products || []}
         columns={columns}
         pageSizeOptions={[5, 10, 20, 50, 100]} //pagination kaç sayfa olcak
         checkboxSelection
