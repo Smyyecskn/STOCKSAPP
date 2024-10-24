@@ -23,7 +23,7 @@ const useStockCalls = () => {
     try {
       const { data } = await axiosWithToken(`/${url}`);
       const apiData = data.data;
-      console.log(apiData, "products");
+      // console.log(apiData, "categories");
       dispatch(getStockSuccess({ apiData, url }));
       toastSuccessNotify(`${url} listesi getirildi`);
     } catch (error) {

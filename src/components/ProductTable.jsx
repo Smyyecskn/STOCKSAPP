@@ -3,12 +3,13 @@ import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import useStockCalls from "../service/useStockCalls";
+// import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 
 export default function ProductTable() {
   const { products } = useSelector((state) => state.stock);
-  const { deleteStock } = useStockCalls();
+  const { deleteStock, putStock } = useStockCalls();
 
-  const getRowId = (row) => row._id;
+  const getRowId = (row) => row?._id;
   const columns = [
     {
       field: "_id",
@@ -26,8 +27,8 @@ export default function ProductTable() {
       headerAlign: "center",
       align: "center",
       valueGetter: (props) => {
-        // console.log(props)
-        return props.row?.categoryId?.name;
+        // console.log(props);
+        return props?.name; //verileri formatlamak istersek
       },
     },
     {
@@ -36,7 +37,7 @@ export default function ProductTable() {
       flex: 1.2,
       headerAlign: "center",
       align: "center",
-      valueGetter: (props) => props.row?.brandId?.name,
+      valueGetter: (props) => props?.name,
     },
     {
       field: "name",
@@ -61,9 +62,14 @@ export default function ProductTable() {
       getActions: (props) => [
         <GridActionsCellItem
           icon={<DeleteForeverIcon />}
-          onClick={() => deleteStock("products", props._id)}
+          onClick={() => deleteStock("products", props.id)}
           label="Delete"
         />,
+        // <GridActionsCellItem
+        //   icon={<ModeEditOutlineIcon />}
+        //   onClick={() => putStock("products", props)}
+        //   label="Edit"
+        // />,
       ],
     },
   ];
@@ -73,13 +79,13 @@ export default function ProductTable() {
     <Box sx={{ width: "100%" }}>
       <DataGrid
         autoHeight
-        rows={products}
+        rows={products || []}
         columns={columns}
-        pageSizeOptions={[5, 10, 20, 50, 100]}
+        pageSizeOptions={[5, 10, 20, 50, 100]} //pagination kaç sayfa olcak
         checkboxSelection
         disableRowSelectionOnClick
         getRowId={getRowId}
-        slots={{ toolbar: GridToolbar }}
+        slots={{ toolbar: GridToolbar }} //filter, print vs özellikler için
       />
     </Box>
   );

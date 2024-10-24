@@ -11,18 +11,14 @@ const Products = () => {
   const { getStocks } = useStockCalls();
   const { products, error, loading } = useSelector((state) => state.stock);
 
-  // const initialState = { categoryId: "", brandId: "", name: "" };
-  const [info, setInfo] = useState({
-    name: "",
-    price: "",
-    quantity: "",
-  });
+  const initialState = { categoryId: "", brandId: "", name: "" };
+  const [info, setInfo] = useState(initialState);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setInfo({ name: "", phone: "", address: "", image: "" });
+    // setInfo({ name: "", price: "", quantity: "" });
   };
 
   useEffect(() => {
@@ -30,8 +26,7 @@ const Products = () => {
     getStocks("categories");
     getStocks("brands");
   }, []);
-
-  console.log("products", products);
+  // console.log("categories", categories);
 
   return (
     <div>
@@ -52,10 +47,9 @@ const Products = () => {
       {error && <ErrorMsg />}
       {loading && <TableSkeleton />}
 
-      {!error && !loading && !products.length && <NoDataMsg />}
+      {!error && !loading && !products?.length && <NoDataMsg />}
 
-      {!loading && !error && products.length > 0 && <ProductTable />}
-      <ProductTable />
+      {!loading && !error && products?.length > 0 && <ProductTable />}
     </div>
   );
 };
