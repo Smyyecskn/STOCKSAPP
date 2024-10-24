@@ -30,6 +30,13 @@ const authSlice = createSlice({
       state[payload.url] = payload.apiData;
     },
 
+    getProPurBrandFirmSuccess: (state, { payload }) => {
+      state.products = payload[0] || [];
+      state.purchases = payload[1] || [];
+      state.brands = payload[2] || [];
+      state.firms = payload[3] || [];
+    },
+
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;
@@ -37,5 +44,10 @@ const authSlice = createSlice({
   },
 });
 
-export const { fetchStart, getStockSuccess, fetchFail } = authSlice.actions;
+export const {
+  fetchStart,
+  getStockSuccess,
+  fetchFail,
+  getProPurBrandFirmSuccess,
+} = authSlice.actions;
 export default authSlice.reducer;

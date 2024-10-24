@@ -69,7 +69,7 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
                 label="Brand"
                 onChange={handleChange}
               >
-                {brands.map((item) => (
+                {brands?.map((item) => (
                   <MenuItem key={item._id} value={item._id}>
                     {item.name}
                   </MenuItem>

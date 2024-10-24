@@ -1,9 +1,13 @@
-import React from 'react'
+import Charts from "../components/Charts";
+import KPI from "../components/KPI";
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <KPI />
+      <Charts />
+    </>
+  );
+};
 
-export default Home
+export default Home;
