@@ -8,7 +8,7 @@ import PurchasesTable from "../components/PurchasesTable";
 import TableSkeleton, { ErrorMsg, NoDataMsg } from "../components/DataFetchMsg";
 
 const Purchases = () => {
-  const { getProPurBrandFirm } = useStockCalls();
+  const { getProPurBranFirm } = useStockCalls();
   const { purchases, error, loading } = useSelector((state) => state.stock);
 
   const initialState = {
@@ -24,11 +24,12 @@ const Purchases = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    // setInfo({ name: "", price: "", quantity: "" });
+    setInfo(initialState);
   };
+  console.log(info);
 
   useEffect(() => {
-    getProPurBrandFirm();
+    getProPurBranFirm();
   }, []);
 
   console.log("purchases", purchases);
@@ -54,7 +55,9 @@ const Purchases = () => {
 
       {!error && !loading && !purchases?.length && <NoDataMsg />}
 
-      {!loading && !error && purchases?.length > 0 && <PurchasesTable />}
+      {!loading && !error && purchases?.length > 0 && (
+        <PurchasesTable handleOpen={handleOpen} setInfo={setInfo} />
+      )}
     </div>
   );
 };

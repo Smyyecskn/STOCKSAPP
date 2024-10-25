@@ -35,6 +35,8 @@ const authSlice = createSlice({
       state.purchases = payload[1];
       state.brands = payload[2];
       state.firms = payload[3];
+      state.loading = false;
+      state.error = false;
     },
 
     fetchFail: (state) => {

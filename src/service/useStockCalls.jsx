@@ -37,17 +37,15 @@ const useStockCalls = () => {
     }
   };
 
-  const getProPurBrandFirm = async () => {
+  const getProPurBranFirm = async () => {
     dispatch(fetchStart());
-
     try {
-      const [products, purchases, brands, firms, categories] =
-        await Promise.all([
-          axiosWithToken("/products/"),
-          axiosWithToken("/purchases/"),
-          axiosWithToken("/brands/"),
-          axiosWithToken("/firms/"),
-        ]);
+      const [products, purchases, brands, firms] = await Promise.all([
+        axiosWithToken("/products/"),
+        axiosWithToken("/purchases/"),
+        axiosWithToken("/brands/"),
+        axiosWithToken("/firms/"),
+      ]);
       dispatch(
         getProPurBrandFirmSuccess([
           products?.data?.data,
@@ -56,6 +54,7 @@ const useStockCalls = () => {
           firms?.data?.data,
         ])
       );
+      toastSuccessNotify(`all listesi getirildi`);
     } catch (error) {
       dispatch(fetchFail());
     }
@@ -95,7 +94,13 @@ const useStockCalls = () => {
     }
   };
 
-  return { getStocks, deleteStock, postStock, putStock, getProPurBrandFirm };
+  return {
+    getStocks,
+    deleteStock,
+    postStock,
+    putStock,
+    getProPurBranFirm,
+  };
 };
 
 export default useStockCalls;
